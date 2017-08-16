@@ -1,0 +1,46 @@
+<h1>Nightingale Surveillance</h1>
+
+<%= form_for SurveillanceRequest.new, html: { class: 'form-inline' } do |form| %>
+
+  <%= form.label :name, 'Name', class: 'mr-sm-2' %>
+  <%= form.text_field :name, class: 'form-control mr-sm-2' %>
+
+  <%= form.label :fields, 'Fields', class: 'mr-sm-2' %>
+  <%= form.text_field :fields, class: 'form-control mr-sm-2' %>
+
+  <%= form.label :terms, 'Terms', class: 'mr-sm-2' %>
+  <%= form.text_field :terms, class: 'form-control mr-sm-2' %>
+
+  <%= form.submit 'Add New Surveillance Request', class: 'btn btn-primary' %>
+
+<% end %>
+
+<h2>Surveillance Results</h2>
+
+<% @surveillance_requests.each do |request| %>
+
+  <h3><%= request.name %></h3>
+
+  Fields: <%= request.fields %></br>
+  Terms: <%= request.fields %></br>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Record</th>
+        <th>Matching Fields</th>
+        <th>Matching Terms</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% request.surveillance_results.each do |result| %>
+        <tr>
+          <td><pre><%= JSON.pretty_generate(result.record.data) %></pre></td>
+          <td><%= result.fields %></td>
+          <td><%= result.terms %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>

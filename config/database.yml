@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+
+development:
+  <<: *default
+  database: nightingale_surveillance_development
+
+test:
+  <<: *default
+  database: nightingale_surveillance_test
+
+production:
+  <<: *default
+  database: nightingale_surveillance_production
