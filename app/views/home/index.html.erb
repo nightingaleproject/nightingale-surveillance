@@ -15,32 +15,6 @@
 
 <% end %>
 
-<h2>Surveillance Results</h2>
-
-<% @surveillance_requests.each do |request| %>
-
-  <h3><%= request.name %></h3>
-
-  Fields: <%= request.fields %></br>
-  Terms: <%= request.fields %></br>
-
-  <table class='table'>
-    <thead>
-      <tr>
-        <th>Record</th>
-        <th>Matching Fields</th>
-        <th>Matching Terms</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% request.surveillance_results.each do |result| %>
-        <tr>
-          <td><pre><%= JSON.pretty_generate(result.record.data) %></pre></td>
-          <td><%= result.fields %></td>
-          <td><%= result.terms %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-<% end %>
+<div id="surveillanceResults">
+  <%= render "surveillance_requests/surveillance_results" %>
+</div>

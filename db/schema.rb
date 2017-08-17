@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20170816180146) do
   create_table "surveillance_results", force: :cascade do |t|
     t.bigint "surveillance_request_id"
     t.bigint "record_id"
-    t.string "fields"
-    t.string "terms"
+    t.string "field"
+    t.string "term"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["record_id"], name: "index_surveillance_results_on_record_id"
